@@ -40,12 +40,14 @@ public class Main {
                     break;
                 }
             }
+        }
+        for (int i = 0; i < numbersArray.size(); i++){
             if (change != 0) {
-                if (numbersArray.get(i) % 9 != 0){
+                if (numbersArray.get(i) % 9 != 0) {
                     int x2 = numbersArray.get(i);
                     x2 += change;
                     change = 0;
-                    numbersArray.set(numbersArray.indexOf(numbersArray.get(i)),x2);
+                    numbersArray.set(numbersArray.indexOf(numbersArray.get(i)), x2);
                 }
             }
         }
