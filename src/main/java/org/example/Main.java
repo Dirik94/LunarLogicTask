@@ -3,54 +3,63 @@ package org.example;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
 
-        int input, change = 6;
-
-        ArrayList<Integer> numbersArray = new ArrayList<>();
+        int input, changesLeft = 6;
+        int[] numbersArray = new int[3];
         Scanner sc = new Scanner(System.in);
-        for (int i = 0; i < 3; i++) {
+        LinkedList<Integer> stack = new LinkedList<Integer>();
+
+
+        for (int i = 0; i < numbersArray.length; i++) {
             System.out.println("To end type any letter...");
             System.out.println("Type numbers:");
             input = sc.nextInt();
-            numbersArray.add(input);
+            numbersArray[i] = input;
         }
-        System.out.println("Your numbers are: " + Arrays.toString(numbersArray.toArray()));
+        System.out.println("Your numbers are: " + Arrays.toString(numbersArray));
 
-        for (int i = 0; i < numbersArray.size(); i++){
-            if (numbersArray.get(i) % 9 == 0){
-                break;
+        for (int j : numbersArray) {
+            LinkedList<Integer> numbers = new LinkedList<Integer>();
+            int numbersStack = j;
+            int numbersStackTemp = j;
+            while (numbersStack > 0) {
+                stack.push(numbersStack % 10);
+                numbersStack /= 10;
             }
-            if (numbersArray.get(i) % 3 == 2) {
-                int x2 = numbersArray.get(i);
-                x2 += 1;
-                numbersArray.set(numbersArray.indexOf(numbersArray.get(i)),x2);
-                change -= 1;
+
+            while (!stack.isEmpty()) {
+                numbers.add(stack.pop());
             }
-            while (change > 0) {
-                if (numbersArray.get(i) % 3 == 1) {
-                    int x2 = numbersArray.get(i);
-                    x2 += 2;
-                    numbersArray.set(numbersArray.indexOf(numbersArray.get(i)), x2);
-                    change -= 2;
-                }else {
-                    break;
+            int sum = 0;
+            while (numbersStackTemp != 0) {
+                sum += numbersStackTemp % 10;
+                numbersStackTemp /= 10;
+            }
+            System.out.println(sum);
+
+            int firstNumber = numbers.get(0);
+            int x = sum % 3;
+            switch (x) {
+                case 1 -> {
+                    firstNumber += 2;
+                    changesLeft = changesLeft - 2;
                 }
-            }
-        }
-        for (int i = 0; i < numbersArray.size(); i++){
-            if (change != 0) {
-                if (numbersArray.get(i) % 9 != 0) {
-                    int x2 = numbersArray.get(i);
-                    x2 += change;
-                    change = 0;
-                    numbersArray.set(numbersArray.indexOf(numbersArray.get(i)), x2);
+                case 2 -> {
+                    firstNumber += 1;
+                    changesLeft = changesLeft - 1;
                 }
+                default -> System.out.println(firstNumber);
             }
+
+            numbers.set(numbers.indexOf(numbers.get(0)), firstNumber);
+
+            System.out.println();
+            System.out.println("Your numbers are: " + Arrays.toString(numbers.toArray()));
         }
-        System.out.println("Your numbers after task are: " + Arrays.toString(numbersArray.toArray()));
     }
 }
