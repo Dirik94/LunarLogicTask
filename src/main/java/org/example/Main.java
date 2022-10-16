@@ -40,7 +40,6 @@ public class Main {
                 sum += numbersStackTemp % 10;
                 numbersStackTemp /= 10;
             }
-//            System.out.println(sum);
 
             int firstNumber = numbers.get(0);
 
@@ -62,11 +61,7 @@ public class Main {
                 default -> System.out.println(firstNumber);
             }
 
-            if (firstNumber >= 9){
-                continue;
-            }else {
                 numbers.set(numbers.indexOf(numbers.get(0)), firstNumber);
-            }
 
             System.out.println();
             System.out.println("Your numbers are: " + Arrays.toString(numbers.toArray()));
@@ -76,26 +71,22 @@ public class Main {
             }
             numbersArray[j] = Integer.parseInt(newArray);
             temp = numbersArray[j];
-            if (temp > max){
+            if (temp < max){
                 max = temp;
-            }
-            String maxNumber = String.valueOf(max);
+                String maxNumber = String.valueOf(max);
                 if (changesLeft >= 3){
-                    int res = new Scanner(maxNumber).useDelimiter("[0-6]").nextInt();
-                    res = res + 3;
-                    numbersArray[j] = Integer.parseInt(maxNumber.replaceFirst("[0-6]",String.valueOf(res)));
-                    changesLeft = changesLeft - 3;
+                    Pattern p = Pattern.compile("([0-6])");
+                    Matcher m = p.matcher(maxNumber);
+                    if (m.find()) {
+                        int res = Integer.parseInt(m.group(1));
+                        res = res + 3;
+                        numbersArray[j] = Integer.parseInt(maxNumber.replaceFirst("[0-6]",String.valueOf(res)));
+                        changesLeft = changesLeft - 3;
+                    }
                 }
+            }
             newArray = "";
         }
-
-//        for (int j : numbersArray) {
-//            temp = j;
-//            if (temp > max) {
-//                max = temp;
-//            }
-//        }
-
         System.out.println("Your new numbers are: " + Arrays.toString(numbersArray) + "//");
     }
 }
