@@ -55,6 +55,9 @@ public class Main {
                     }
                 }
                 case 2 -> {
+                    if (firstNumber == 9){
+                        break;
+                    }
                     firstNumber += 1;
                     changesLeft = changesLeft - 1;
                 }
