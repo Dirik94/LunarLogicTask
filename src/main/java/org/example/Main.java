@@ -79,12 +79,13 @@ public class Main {
             if (temp > max){
                 max = temp;
             }
-            if (changesLeft >= 3){
-                String maxNumber = String.valueOf(max);
-                Matcher matcher = Pattern.compile("[0-6]").matcher(newArray);
-                numbersArray[j] = Integer.parseInt(maxNumber.replaceFirst("[0-6]", matcher.toString() + 3));
-                changesLeft = changesLeft - 3;
-            }
+            String maxNumber = String.valueOf(max);
+                if (changesLeft >= 3){
+                    int res = new Scanner(maxNumber).useDelimiter("[0-6]").nextInt();
+                    res = res + 3;
+                    numbersArray[j] = Integer.parseInt(maxNumber.replaceFirst("[0-6]",String.valueOf(res)));
+                    changesLeft = changesLeft - 3;
+                }
             newArray = "";
         }
 
