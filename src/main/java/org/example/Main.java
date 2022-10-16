@@ -46,6 +46,9 @@ public class Main {
             int x = sum % 3;
             switch (x) {
                 case 1 -> {
+                    if (firstNumber == 9){
+                        break;
+                    }
                     if (firstNumber != 8){
                         firstNumber += 2;
                         changesLeft = changesLeft - 2;
