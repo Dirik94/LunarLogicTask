@@ -58,13 +58,13 @@ public class Main {
                     firstNumber += 1;
                     changesLeft = changesLeft - 1;
                 }
-                default -> System.out.println(firstNumber);
+                default -> System.out.println("This number is divisible by 3, skipping");
             }
 
                 numbers.set(numbers.indexOf(numbers.get(0)), firstNumber);
 
-            System.out.println();
-            System.out.println("Your numbers are: " + Arrays.toString(numbers.toArray()));
+//            System.out.println();
+//            System.out.println("Your numbers are: " + Arrays.toString(numbers.toArray()));
 
             while (!numbers.isEmpty()){
                 newArray = newArray + numbers.pop();
@@ -78,15 +78,15 @@ public class Main {
                     Pattern p = Pattern.compile("([0-6])");
                     Matcher m = p.matcher(maxNumber);
                     if (m.find()) {
-                        int res = Integer.parseInt(m.group(1));
-                        res = res + 3;
-                        numbersArray[j] = Integer.parseInt(maxNumber.replaceFirst("[0-6]",String.valueOf(res)));
+                        int changedNumber = Integer.parseInt(m.group(1));
+                        changedNumber = changedNumber + 3;
+                        numbersArray[j] = Integer.parseInt(maxNumber.replaceFirst("[0-6]",String.valueOf(changedNumber)));
                         changesLeft = changesLeft - 3;
                     }
                 }
             }
             newArray = "";
         }
-        System.out.println("Your new numbers are: " + Arrays.toString(numbersArray) + "//");
+        System.out.println("Your new numbers are: " + Arrays.toString(numbersArray));
     }
 }
