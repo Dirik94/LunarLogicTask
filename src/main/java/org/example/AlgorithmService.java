@@ -47,7 +47,6 @@ class AlgorithmService {
     }
     private void findMaxNumber(int[] numbersArray, int numberOfLoop) {
         int temp = numbersArray[numberOfLoop];
-        System.out.println(numbersArray[numberOfLoop] + "---");
         if (temp > max) {
             max = temp;
             maxNumber = String.valueOf(max);
