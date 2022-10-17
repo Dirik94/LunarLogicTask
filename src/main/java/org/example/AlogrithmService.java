@@ -103,6 +103,10 @@ class AlgorithmService {
             LinkedList<Integer> numbers = new LinkedList<Integer>();
             int numbersStackTemp = numbersArray[j];
 
+            if (numbersStackTemp <= 0){
+                break;
+            }
+
             sum = 0;
             while (numbersStackTemp != 0) {
                 int num = numbersStackTemp % 10;
