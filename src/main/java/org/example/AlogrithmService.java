@@ -39,17 +39,16 @@ class AlgorithmService {
 
         numbers.set(numbers.indexOf(numbers.get(0)), firstNumber);
     }
-
     private void findMaxNumber(int[] numbersArray, int numberOfLoop) {
         int temp = numbersArray[numberOfLoop];
         if (temp > max) {
             max = temp;
             maxNumber = String.valueOf(max);
-        }
-        if (changesLeft >= 3) {
-            Pattern p = Pattern.compile("([0-6])");
-            Matcher m = p.matcher(maxNumber);
-            increaseNumberByThree(numbersArray, numberOfLoop, m);
+            if (changesLeft >= 3) {
+                Pattern p = Pattern.compile("([0-6])");
+                Matcher m = p.matcher(maxNumber);
+                increaseNumberByThree(numbersArray, numberOfLoop, m);
+            }
         }
     }
 
