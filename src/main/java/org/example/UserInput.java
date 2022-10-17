@@ -17,7 +17,7 @@ class UserInput {
                 input = sc.nextInt();
                 numbersArray[i] = input;
             } catch (InputMismatchException e) {
-                System.out.println("You are allowed to add only numbers(MAx INT). To end type new line with any letter.");
+                System.out.println("You are allowed to add only numbers(MAX INT). To end type new line with any letter.");
                 i--;
                 sc.next();
             }

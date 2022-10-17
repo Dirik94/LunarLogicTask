@@ -21,6 +21,7 @@ class AlgorithmService {
         switch (x) {
             case 1 -> {
                 if (breakSwitchIfNineIsFound(firstNumber)) break;
+                if (changesLeft <= 2) break;
                 if (firstNumber != 8) {
                     firstNumber += 2;
                     changesLeft = changesLeft - 2;
@@ -31,10 +32,11 @@ class AlgorithmService {
             }
             case 2 -> {
                 if (breakSwitchIfNineIsFound(firstNumber)) break;
+                if (changesLeft >= 1) break;
                 firstNumber += 1;
                 changesLeft = changesLeft - 1;
             }
-            default -> System.out.println("This number is divisible by 3, skipping");
+            default -> System.out.println();
         }
 
         numbers.set(numbers.indexOf(numbers.get(0)), firstNumber);
@@ -72,7 +74,7 @@ class AlgorithmService {
     private void addRemainingChanges(int[] numbersArray) {
         if (changesLeft > 3) {
             for (int i = 0; i < numbersArray.length; i++) {
-                while (changesLeft != 0) {
+                while (changesLeft > 0) {
                     if (numbersArray[i] % 9 > 0 && numbersArray[i] % 3 == 0) {
                         numbersArray[i] += 3;
                         changesLeft -= 3;
