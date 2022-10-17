@@ -70,7 +70,7 @@ class TheLoop{
 
     private void findMaxNumber(int[] numbersArray, int numberOfLoop){
         temp = numbersArray[numberOfLoop];
-        if (temp < max){
+        if (temp > max){
             max = temp;
             String maxNumber = String.valueOf(max);
             if (changesLeft >= 3){
