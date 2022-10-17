@@ -78,6 +78,7 @@ class AlgorithmService {
                         changesLeft -= 3;
                     }else {
                         break;
+
                     }
                 }
             }
