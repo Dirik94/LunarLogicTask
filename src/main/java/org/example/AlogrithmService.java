@@ -6,7 +6,9 @@ import java.util.regex.Pattern;
 
 class AlgorithmService {
 
-    private int changesLeft = 6, max = 0, temp, sum;
+    private int changesLeft = 6;
+    private int max = 0;
+    private int sum;
     private String maxNumber;
     private StringBuilder newArray = new StringBuilder();
     private LinkedList<Integer> stack = new LinkedList<Integer>();
@@ -14,12 +16,11 @@ class AlgorithmService {
     private void divideByThree(LinkedList<Integer> numbers) {
         int firstNumber = numbers.get(0);
 
+
         int x = sum % 3;
         switch (x) {
             case 1 -> {
-                if (firstNumber == 9) {
-                    break;
-                }
+                if (breakSwitchIfNineIsFound(firstNumber)) break;
                 if (firstNumber != 8) {
                     firstNumber += 2;
                     changesLeft = changesLeft - 2;
@@ -29,9 +30,7 @@ class AlgorithmService {
                 }
             }
             case 2 -> {
-                if (firstNumber == 9) {
-                    break;
-                }
+                if (breakSwitchIfNineIsFound(firstNumber)) break;
                 firstNumber += 1;
                 changesLeft = changesLeft - 1;
             }
@@ -41,8 +40,15 @@ class AlgorithmService {
         numbers.set(numbers.indexOf(numbers.get(0)), firstNumber);
     }
 
+    private static boolean breakSwitchIfNineIsFound(int firstNumber) {
+        if (firstNumber == 9) {
+            return true;
+        }
+        return false;
+    }
+
     private void findMaxNumber(int[] numbersArray, int numberOfLoop) {
-        temp = numbersArray[numberOfLoop];
+        int temp = numbersArray[numberOfLoop];
         if (temp > max) {
             max = temp;
             maxNumber = String.valueOf(max);
@@ -50,12 +56,16 @@ class AlgorithmService {
         if (changesLeft >= 3) {
             Pattern p = Pattern.compile("([0-6])");
             Matcher m = p.matcher(maxNumber);
-            if (m.find()) {
-                int changedNumber = Integer.parseInt(m.group(1));
-                changedNumber = changedNumber + 3;
-                numbersArray[numberOfLoop] = Integer.parseInt(maxNumber.replaceFirst("[0-6]", String.valueOf(changedNumber)));
-                changesLeft = changesLeft - 3;
-            }
+            increaseNumberByThree(numbersArray, numberOfLoop, m);
+        }
+    }
+
+    private void increaseNumberByThree(int[] numbersArray, int numberOfLoop, Matcher m) {
+        if (m.find()) {
+            int changedNumber = Integer.parseInt(m.group(1));
+            changedNumber = changedNumber + 3;
+            numbersArray[numberOfLoop] = Integer.parseInt(maxNumber.replaceFirst("[0-6]", String.valueOf(changedNumber)));
+            changesLeft = changesLeft - 3;
         }
     }
 
