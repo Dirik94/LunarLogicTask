@@ -6,9 +6,7 @@ import java.util.regex.Pattern;
 
 class AlgorithmService {
 
-    private int changesLeft = 6;
-    private int max = 0;
-    private int sum;
+    private int changesLeft = 6, max = 0, sum;
     private String maxNumber;
     private StringBuilder newArray = new StringBuilder();
     private LinkedList<Integer> stack = new LinkedList<Integer>();

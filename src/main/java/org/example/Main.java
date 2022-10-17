@@ -9,6 +9,7 @@ public class Main {
 
         AlgorithmService loop = new AlgorithmService();
         loop.algorithm(numbersArray);
+
         System.out.println("Your new numbers are: " + Arrays.toString(numbersArray));
     }
 }
