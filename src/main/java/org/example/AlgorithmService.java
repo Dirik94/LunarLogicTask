@@ -34,6 +34,12 @@ class AlgorithmService {
                 firstNumber += 1;
                 changesLeft = changesLeft - 1;
             }
+            case 0 -> {
+                if (firstNumber > 6) break;
+                if (changesLeft < 3) break;
+                firstNumber += 3;
+                changesLeft -= 3;
+            }
             default -> System.out.println();
         }
 
