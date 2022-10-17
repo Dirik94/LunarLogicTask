@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-class TheLoop {
+class AlgorithmService {
 
     private int changesLeft = 6, max = 0, temp, sum;
     private String maxNumber;
