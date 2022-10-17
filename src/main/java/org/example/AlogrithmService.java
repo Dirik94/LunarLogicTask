@@ -20,7 +20,7 @@ class AlgorithmService {
         int x = sum % 3;
         switch (x) {
             case 1 -> {
-                if (breakSwitchIfNineIsFound(firstNumber)) break;
+                if (firstNumber == 9) break;
                 if (changesLeft <= 2) break;
                 if (firstNumber != 8) {
                     firstNumber += 2;
@@ -31,7 +31,7 @@ class AlgorithmService {
                 }
             }
             case 2 -> {
-                if (breakSwitchIfNineIsFound(firstNumber)) break;
+                if (firstNumber == 9) break;
                 if (changesLeft >= 1) break;
                 firstNumber += 1;
                 changesLeft = changesLeft - 1;
@@ -40,13 +40,6 @@ class AlgorithmService {
         }
 
         numbers.set(numbers.indexOf(numbers.get(0)), firstNumber);
-    }
-
-    private static boolean breakSwitchIfNineIsFound(int firstNumber) {
-        if (firstNumber == 9) {
-            return true;
-        }
-        return false;
     }
 
     private void findMaxNumber(int[] numbersArray, int numberOfLoop) {
