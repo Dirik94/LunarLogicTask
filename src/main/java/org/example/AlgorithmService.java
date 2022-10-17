@@ -47,11 +47,12 @@ class AlgorithmService {
     }
     private void findMaxNumber(int[] numbersArray, int numberOfLoop) {
         int temp = numbersArray[numberOfLoop];
+        System.out.println(numbersArray[numberOfLoop] + "---");
         if (temp > max) {
             max = temp;
             maxNumber = String.valueOf(max);
             if (changesLeft >= 3) {
-                Pattern p = Pattern.compile("([0-6])");
+                Pattern p = Pattern.compile("([0-8])");
                 Matcher m = p.matcher(maxNumber);
                 increaseNumberByThree(numbersArray, numberOfLoop, m);
             }
@@ -61,13 +62,19 @@ class AlgorithmService {
     private void increaseNumberByThree(int[] numbersArray, int numberOfLoop, Matcher m) {
         if (m.find()) {
             int changedNumber = Integer.parseInt(m.group(1));
-            changedNumber = changedNumber + 3;
-            numbersArray[numberOfLoop] = Integer.parseInt(maxNumber.replaceFirst("[0-6]", String.valueOf(changedNumber)));
-            changesLeft = changesLeft - 3;
+            while (changesLeft > 0) {
+                if (changedNumber % 3 != 0) {
+                    changedNumber = changedNumber + 1;
+                    numbersArray[numberOfLoop] = Integer.parseInt(maxNumber.replaceFirst("([0-8])", String.valueOf(changedNumber)));
+                    changesLeft = changesLeft - 1;
+                }else {
+                    break;
+                }
+            }
         }
     }
 
-    private void addRemainingChanges(int[] numbersArray) {
+    public void addRemainingChanges(int[] numbersArray) {
         if (changesLeft > 0) {
             for (int i = 0; i < numbersArray.length; i++) {
                 while (changesLeft > 0) {
@@ -80,6 +87,7 @@ class AlgorithmService {
                 }
             }
         }
+        System.out.println("Changes left: " + changesLeft);
     }
 
 
@@ -91,7 +99,6 @@ class AlgorithmService {
             if (numbersStackTemp <= 0){
                 break;
             }
-            addRemainingChanges(numbersArray);
             sum = 0;
             while (numbersStackTemp != 0) {
                 int num = numbersStackTemp % 10;
@@ -111,13 +118,11 @@ class AlgorithmService {
                 newArray.append(numbers.pop());
             }
             numbersArray[j] = Integer.parseInt(newArray.toString());
-            if (numbersArray[j] == numbersArray[numbersArray.length - 1]){
+            if (numbers.isEmpty()){
                 findMaxNumber(numbersArray, j);
             }
 
             newArray = new StringBuilder();
         }
-        addRemainingChanges(numbersArray);
-        System.out.println("Changes Left: " + changesLeft);
     }
 }
