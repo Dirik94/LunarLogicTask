@@ -69,6 +69,21 @@ class AlgorithmService {
         }
     }
 
+    private void addRemainingChanges(int[] numbersArray) {
+        if (changesLeft > 3) {
+            for (int i = 0; i < numbersArray.length; i++) {
+                while (changesLeft != 0) {
+                    if (numbersArray[i] % 9 > 0 && numbersArray[i] % 3 == 0) {
+                        numbersArray[i] += 3;
+                        changesLeft -= 3;
+                    }else {
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
 
     public void algorithm(int[] numbersArray) {
         for (int j = 0; j < numbersArray.length; j++) {
@@ -97,5 +112,6 @@ class AlgorithmService {
 
             newArray = new StringBuilder();
         }
+        addRemainingChanges(numbersArray);
     }
 }
