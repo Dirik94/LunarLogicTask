@@ -62,12 +62,12 @@ class AlgorithmService {
     }
 
     private void addRemainingChanges(int[] numbersArray) {
-        if (changesLeft > 3) {
+        if (changesLeft > 0) {
             for (int i = 0; i < numbersArray.length; i++) {
                 while (changesLeft > 0) {
                     if (numbersArray[i] % 9 > 0 && numbersArray[i] % 3 == 0) {
-                        numbersArray[i] += 3;
-                        changesLeft -= 3;
+                        numbersArray[i] += 1;
+                        changesLeft -= 1;
                     }else {
                         break;
 
@@ -75,18 +75,18 @@ class AlgorithmService {
                 }
             }
         }
-        if (changesLeft > 0) {
-            for (int i = 0; i < numbersArray.length; i++) {
-                while (changesLeft > 0) {
-                    if (numbersArray[i] % 3 > 0) {
-                        numbersArray[i] += 1;
-                        changesLeft -= 1;
-                    }else {
-                        break;
-                    }
-                }
-            }
-        }
+//        if (changesLeft > 0) {
+//            for (int i = 0; i < numbersArray.length; i++) {
+//                while (changesLeft > 0) {
+//                    if (numbersArray[i] % 3 > 0) {
+//                        numbersArray[i] += 1;
+//                        changesLeft -= 1;
+//                    }else {
+//                        break;
+//                    }
+//                }
+//            }
+//        }
     }
 
 
@@ -117,7 +117,9 @@ class AlgorithmService {
                 newArray.append(numbers.pop());
             }
             numbersArray[j] = Integer.parseInt(newArray.toString());
-            findMaxNumber(numbersArray, j);
+            if (numbersArray[j] == numbersArray[numbersArray.length - 1]){
+                findMaxNumber(numbersArray, j);
+            }
 
             newArray = new StringBuilder();
         }
