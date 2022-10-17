@@ -83,6 +83,18 @@ class AlgorithmService {
                 }
             }
         }
+        if (changesLeft > 0) {
+            for (int i = 0; i < numbersArray.length; i++) {
+                while (changesLeft > 0) {
+                    if (numbersArray[i] % 3 > 0) {
+                        numbersArray[i] += 1;
+                        changesLeft -= 1;
+                    }else {
+                        break;
+                    }
+                }
+            }
+        }
     }
 
 
