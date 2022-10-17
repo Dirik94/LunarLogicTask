@@ -19,7 +19,7 @@ class AlgorithmService {
         switch (x) {
             case 1 -> {
                 if (firstNumber == 9) break;
-                if (changesLeft <= 2) break;
+                if (changesLeft < 2) break;
                 if (firstNumber != 8) {
                     firstNumber += 2;
                     changesLeft = changesLeft - 2;
@@ -30,7 +30,7 @@ class AlgorithmService {
             }
             case 2 -> {
                 if (firstNumber == 9) break;
-                if (changesLeft >= 1) break;
+                if (changesLeft == 0) break;
                 firstNumber += 1;
                 changesLeft = changesLeft - 1;
             }
@@ -62,19 +62,19 @@ class AlgorithmService {
     }
 
     private void addRemainingChanges(int[] numbersArray) {
-        if (changesLeft > 0) {
-            for (int i = 0; i < numbersArray.length; i++) {
-                while (changesLeft > 0) {
-                    if (numbersArray[i] % 9 > 0 && numbersArray[i] % 3 == 0) {
-                        numbersArray[i] += 1;
-                        changesLeft -= 1;
-                    }else {
-                        break;
-
-                    }
-                }
-            }
-        }
+//        if (changesLeft > 0) {
+//            for (int i = 0; i < numbersArray.length; i++) {
+//                while (changesLeft > 0) {
+//                    if (numbersArray[i] % 9 > 0 && numbersArray[i] % 3 == 0) {
+//                        numbersArray[i] += 3;
+//                        changesLeft -= 3;
+//                    }else {
+//                        break;
+//
+//                    }
+//                }
+//            }
+//        }
 //        if (changesLeft > 0) {
 //            for (int i = 0; i < numbersArray.length; i++) {
 //                while (changesLeft > 0) {
