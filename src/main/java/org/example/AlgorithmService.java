@@ -91,7 +91,7 @@ class AlgorithmService {
             if (numbersStackTemp <= 0){
                 break;
             }
-
+            addRemainingChanges(numbersArray);
             sum = 0;
             while (numbersStackTemp != 0) {
                 int num = numbersStackTemp % 10;
@@ -105,6 +105,7 @@ class AlgorithmService {
             }
 
             divideByThree(numbers);
+
 
             while (!numbers.isEmpty()) {
                 newArray.append(numbers.pop());
