@@ -6,10 +6,10 @@ import java.util.regex.Pattern;
 
 class TheLoop {
 
-    int changesLeft = 6, max = 0, temp, sum;
-    String maxNumber;
-    StringBuilder newArray = new StringBuilder();
-    LinkedList<Integer> stack = new LinkedList<Integer>();
+    private int changesLeft = 6, max = 0, temp, sum;
+    private String maxNumber;
+    private StringBuilder newArray = new StringBuilder();
+    private LinkedList<Integer> stack = new LinkedList<Integer>();
 
     private void divideByThree(LinkedList<Integer> numbers) {
         int firstNumber = numbers.get(0);

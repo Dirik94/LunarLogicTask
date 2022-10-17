@@ -5,13 +5,9 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 class UserInput {
-    int input = 0;
-    int[] numbersArray = new int[3];
-    Scanner sc = new Scanner(System.in);
-
-    public UserInput() {
-    }
-
+    private int input = 0;
+    private int[] numbersArray = new int[3];
+    private Scanner sc = new Scanner(System.in);
     public int[] getUserInputToArray() {
         for (int i = 0; i < numbersArray.length; i++) {
             System.out.println("To end, type any letter...");
