@@ -111,5 +111,6 @@ class AlgorithmService {
             newArray = new StringBuilder();
         }
         addRemainingChanges(numbersArray);
+        System.out.println("Changes Left: " + changesLeft);
     }
 }
