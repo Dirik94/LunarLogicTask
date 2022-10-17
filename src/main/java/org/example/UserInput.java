@@ -5,9 +5,9 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 class UserInput {
-    public static int[] getUserInputToArray() {
+    public static Integer[] getUserInputToArray() {
         int input = 0;
-        int[] numbersArray = new int[3];
+        Integer[] numbersArray = new Integer[3];
         Scanner sc = new Scanner(System.in);
 
         for (int i = 0; i < numbersArray.length; i++) {

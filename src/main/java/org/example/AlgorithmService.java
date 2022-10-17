@@ -45,7 +45,7 @@ class AlgorithmService {
 
         numbers.set(numbers.indexOf(numbers.get(0)), firstNumber);
     }
-    private void findMaxNumber(int[] numbersArray, int numberOfLoop) {
+    private void findMaxNumber(Integer[] numbersArray, int numberOfLoop) {
         int temp = numbersArray[numberOfLoop];
         if (temp > max) {
             max = temp;
@@ -58,7 +58,7 @@ class AlgorithmService {
         }
     }
 
-    private void increaseNumberByThree(int[] numbersArray, int numberOfLoop, Matcher m) {
+    private void increaseNumberByThree(Integer[] numbersArray, int numberOfLoop, Matcher m) {
         if (m.find()) {
             int changedNumber = Integer.parseInt(m.group(1));
             while (changesLeft > 0) {
@@ -73,7 +73,7 @@ class AlgorithmService {
         }
     }
 
-    public void addRemainingChanges(int[] numbersArray) {
+    public void addRemainingChanges(Integer[] numbersArray) {
         if (changesLeft > 0) {
             for (int i = 0; i < numbersArray.length; i++) {
                 while (changesLeft > 0) {
@@ -90,7 +90,7 @@ class AlgorithmService {
     }
 
 
-    public void algorithm(int[] numbersArray) {
+    public void algorithm(Integer[] numbersArray) {
         for (int j = 0; j < numbersArray.length; j++) {
             LinkedList<Integer> numbers = new LinkedList<Integer>();
             int numbersStackTemp = numbersArray[j];
@@ -117,11 +117,9 @@ class AlgorithmService {
                 newArray.append(numbers.pop());
             }
             numbersArray[j] = Integer.parseInt(newArray.toString());
-            if (numbers.isEmpty()){
-                findMaxNumber(numbersArray, j);
-            }
 
             newArray = new StringBuilder();
         }
+        findMaxNumber(numbersArray, 2);
     }
 }
