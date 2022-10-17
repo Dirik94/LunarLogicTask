@@ -35,6 +35,7 @@ class UserInput{
 class TheLoop{
 
     int changesLeft = 6, max = 0, temp, sum;
+    String maxNumber;
     StringBuilder newArray = new StringBuilder();
     LinkedList<Integer> stack = new LinkedList<Integer>();
 
@@ -72,16 +73,16 @@ class TheLoop{
         temp = numbersArray[numberOfLoop];
         if (temp > max){
             max = temp;
-            String maxNumber = String.valueOf(max);
-            if (changesLeft >= 3){
-                Pattern p = Pattern.compile("([0-6])");
-                Matcher m = p.matcher(maxNumber);
-                if (m.find()) {
-                    int changedNumber = Integer.parseInt(m.group(1));
-                    changedNumber = changedNumber + 3;
-                    numbersArray[numberOfLoop] = Integer.parseInt(maxNumber.replaceFirst("[0-6]",String.valueOf(changedNumber)));
-                    changesLeft = changesLeft - 3;
-                }
+            maxNumber = String.valueOf(max);
+        }
+        if (changesLeft >= 3){
+            Pattern p = Pattern.compile("([0-6])");
+            Matcher m = p.matcher(maxNumber);
+            if (m.find()) {
+                int changedNumber = Integer.parseInt(m.group(1));
+                changedNumber = changedNumber + 3;
+                numbersArray[numberOfLoop] = Integer.parseInt(maxNumber.replaceFirst("[0-6]",String.valueOf(changedNumber)));
+                changesLeft = changesLeft - 3;
             }
         }
     }
